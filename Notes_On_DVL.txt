@@ -1,0 +1,14 @@
+IMU & Navigation
+- Nortek Nucleus 1000 DVL – Doppler Velocity Log for underwater localization
+- BUILT-IN: Sub-Conn cable (w/ DVL) – Waterproof interface
+    - BUILT-IN: Sub-Conn to Ethernet adapter board – For DVL communication
+
+This model returns the values:
+- Velocity (x,y,z) relative to the seabed (m/s)
+- Altitude (distance from the seafloor) (m)
+- Status (health or error codes)
+- Orientation (degrees) (only if we use add-ons)
+- Confidence in reading (validity)
+
+MCU - Teensy 4.1 has ethernet capabilities so we will use ethernet communication
+
