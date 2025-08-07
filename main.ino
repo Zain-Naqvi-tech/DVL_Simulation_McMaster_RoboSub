@@ -8,6 +8,8 @@
 
 //(ROUGH COMMENT) Reference for some part of the code right now - Arduino Docs: https://docs.arduino.cc/libraries/ethernet/
 
+//We need a way to fake the data (simulation.ino) and send it to main.ino
+
 #include <NativeEthernet.h> //Used for communication with the teensy 4.1 - https://github.com/vjmuzik/NativeEthernet
 #include <EthernetUdp.h> //UDP is the communication protocol used by the DVL - the DVL sends its data as UDP packets. 
 
@@ -21,16 +23,11 @@ unsigned int port; //port from the dvl - teensy will listen to the data sent by 
 void setup() {
     Serial.begin(9600); //start the serial monitor 
     Ethernet.begin(ip); //initialises the ethernet hardware
-    udp.begin(port); //the teensy starts processing incoming data (UDP Messages)
 }
 
 void loop() {
-    //Need to add a way to show the data sent in from the dvl using ethernet protocols (some snippets taken from arduino forum)
-    int packetSize = udp.parsePacket();
-    if packetSize() {
-        // if there is a response from udp.parsePacket() 
-        
-    }
+    //Need to add a way to show the data sent in from the dvl using ethernet protocols 
+    
 }
 
 //Need a way to process all that data into json and get it ready for proper display - might need it for the dashboard (or better testing)
