@@ -26,15 +26,17 @@ private:
   String timeStamp(); //.
   float delay(); //another random time in s
   float FOM(); //This returns a randomized figure of merit - quantifies the performance
-  string checksum(); //many online resources suggest using this as another element in the simulation 
+  String checksum(); //many online resources suggest using this as another element in the simulation 
   float temp(); //random temperature (degree Celcius)
   float pressure(); //random pressure (Bar)
   float sound_velocity(): //random sound velocity (m/s)
+  String finalSentence();
   
   float vx, vy, vz; 
   float d1, d2, d3, d4; //all beam ranges (4)
   float temperature;
   float bar; //pressure variable - assigned a value using the function float pressure(); 
+  
 
 };
 
