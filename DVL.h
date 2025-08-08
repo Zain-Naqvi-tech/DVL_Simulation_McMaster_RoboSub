@@ -24,7 +24,8 @@ private:
   float randomVelocity(); //random vx, vy, vz - need to just output a random velocity from a negative to positie range - this functions can be reused for vx, vy and vz seperately. 
   float randomDistance(); //beam ranges (m)
   String timeStamp(); //.
-  float delay(); //another random time in s
+  float delay(); //another random time in s - Time from the center of the echo of the cell, which estimates the water track velocity, to the time indicated by timestamp
+
   float FOM(); //This returns a randomized figure of merit - quantifies the performance
   String checksum(); //many online resources suggest using this as another element in the simulation 
   float temp(); //random temperature (degree Celcius)
