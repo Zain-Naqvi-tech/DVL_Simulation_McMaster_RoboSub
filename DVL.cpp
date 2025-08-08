@@ -33,12 +33,26 @@ void DVL_SIM::init(){
   
 }
 
-//Delegation Starts
 //Zain
 void DVL_SIM::finalSentence(){
+  dt1 = delay();
+  dt2 = delay();
+  FOM_s = FOM();
   string s = "";
   //we can concatenate everythig to this string
-  s += "
+  s += "Time = " + timeStamp();
+  s += "dt1 = " + dt1;
+  s += "dt2 = " + dt2;
+  s += "vx = " + vx;
+  s += "vy = " + vy;
+  s += "vz = " + vz;
+  s += "d1 = " + d1;
+  s += "d2 = " + d2;
+  s += "d3 = " + d3;
+  s += "d4 = " + d4;
+  s += "FOM = " + FOM_s;
+  //might need to clean the output based on whhat we get once all the functions are done
+  
 }
 
 
