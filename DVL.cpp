@@ -90,7 +90,7 @@ float DVL_SIM::delay(){
   return ((float)random(-2000,2000));
 } 
 
-float DVL_SIM::FOM(){
+float DVL_SIM::FOM(){ //Figure of Metric - Not so sure about an output from this function, but many sources have suggested it
   return ((float)random(50));
 }
 
@@ -104,7 +104,7 @@ float DVL_SIM::sound_velocity(){
 }
 
 float DVL_SIM::checksum(){
-  //Figuring it out - might need to use a pre-built formula like the sound_velocity one
+  //Figuring it out - need to use a pre-built formula like the sound_velocity one
   
 }
 
