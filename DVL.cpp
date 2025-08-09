@@ -4,16 +4,18 @@
 
 //Firstly, we create the constructor class
 DVL_SIM::DVL_SIM(IPAddress ip, unsigned int port){
-  ip = teensy;
-  port = udpPort;
+  teensy = ip;
+  dpPort = port;
   vx = vy = vz = 0.0f;
   d1 = d2 = d3 = d4 = 5.0f; //just for basic initialisation
+  temperature = 0;
+  bar = 0;
 }
 
 //Basic start for ethernet communication - sets up the DVL to send udp packets to the teensy
 void DVL_SIM::begin(){
   Ethernet.begin(teensy);
-  udp.begin(updPort);
+  udp.begin(udpPort);
 }
 
 void DVL_SIM::init(){
@@ -26,10 +28,17 @@ void DVL_SIM::init(){
   d3 = randomDistance();
   d4 = randomDistance();
 
+  temperature = temp();
+  bar = pressure();
+
+  CS = checksum();
+  
   String final_text = finalSentence();
 
-  //Send the udp packets (figuring out how to code this right now) (All the above data can be sent through udp packets to simulate a dvl)
-
+  //Send the udp packets (figuring out how to code this right now) (sent through udp packets to simulate a dvl)
+  udp.beginPacket(udp.remoteIP(), udp.remotePort() > 0 ? udp.remotePort() : udpPort);
+  udp.write(sentence.c_str());
+  udp.endPacket();
   
 }
 
@@ -38,21 +47,61 @@ void DVL_SIM::finalSentence(){
   dt1 = delay();
   dt2 = delay();
   FOM_s = FOM();
-  string s = "";
+  String s = "";
   //we can concatenate everythig to this string
-  s += "Time = " + timeStamp();
-  s += "dt1 = " + dt1;
-  s += "dt2 = " + dt2;
-  s += "vx = " + vx;
-  s += "vy = " + vy;
-  s += "vz = " + vz;
-  s += "d1 = " + d1;
-  s += "d2 = " + d2;
-  s += "d3 = " + d3;
-  s += "d4 = " + d4;
-  s += "FOM = " + FOM_s;
+  s += "vx = " + String(vx, 2);
+  s += "vy = " + String(vy, 2);
+  s += "vz = " + String(vz, 2);
+  s += "d1 = " + String(d1, 2);
+  s += "d2 = " + String(d2, 2;
+  s += "d3 = " + String(d3, 2);
+  s += "d4 = " + String(d4, 2);
+  s += "Temp = " + String(temperature, 2);
+  s += "Pressure = " + String(bar, 2);
+  s += "Sound Velocity = " + String();
+  s += "Time = " + String(timeStamp(), 2);
+  s += "dt1 = " + String(dt1, 2);
+  s += "dt2 = " + String(dt2, 2);
+  s += "FOM = " + String(FOM_s, 2);
+  s += "Checksum = " + String(CS, 2)
+
   //might need to clean the output based on whhat we get once all the functions are done
   
 }
+
+float DVL_SIM::randomVelocity(){ //random velocity in m/s
+  x = (float)random(-5000,5000) / 1000.0f; //using the arduino random() function in this case
+  return x
+}
+
+float DVL_SIM::randomDistance(){ //random distance in m
+  return ((float)random(1,750) / 10.0f);
+}
+
+float DVL_SIM::tmep(){ //random temperature in degrees celcius
+  return ((float)random(-4,40));
+}
+
+float DVL_SIM::pressure(){ //random pressure in bar
+  return ((float)random(100)); 
+}
+
+float DVL_SIM::delay(){
+  return ((float)random(-2000,2000));
+} 
+
+float DVL_SIM::FOM(){
+  return ((float)random(50));
+}
+
+float DVL_SIM::timeStamp(){
+  return ((float)random(0,30));
+}
+
+float DVL_SIM::sound_velocity(){
+  //figuring it out - basic formulas using temp and pressure
+  
+}
+
 
 
