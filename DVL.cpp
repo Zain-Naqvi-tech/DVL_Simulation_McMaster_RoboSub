@@ -99,9 +99,12 @@ float DVL_SIM::timeStamp(){
 }
 
 float DVL_SIM::sound_velocity(){
-  //figuring it out - basic formulas using temp and pressure
-  
+  //basic UNESCO sound velocuty formula. 
+  return 1449.0f + 4.6f * temperature - 0.055f * temperature * temperature + 0.00029f * temperature * temperature * temperature + 0.16f * bar;
 }
 
-
+float DVL_SIM::checksum(){
+  //Figuring it out - might need to use a pre-built formula like the sound_velocity one
+  
+}
 
