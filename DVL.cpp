@@ -5,7 +5,7 @@
 //Firstly, we create the constructor class
 DVL_SIM::DVL_SIM(IPAddress ip, unsigned int port){
   teensy = ip;
-  dpPort = port;
+  udpPort = port;
   vx = vy = vz = 0.0f;
   d1 = d2 = d3 = d4 = 5.0f; //just for basic initialisation
   temperature = 0;
@@ -42,7 +42,6 @@ void DVL_SIM::init(){
   
 }
 
-//Zain
 void DVL_SIM::finalSentence(){
   dt1 = delay();
   dt2 = delay();
