@@ -89,7 +89,7 @@ float DVL_SIM::delay(){
   return ((float)random(-2000,2000));
 } 
 
-float DVL_SIM::FOM(){ //Figure of Metric - Not so sure about an output from this function, but many sources have suggested it
+float DVL_SIM::FOM(){ //Figure of Metric (uncertainty in velocities and distances
   return ((float)random(50));
 }
 
